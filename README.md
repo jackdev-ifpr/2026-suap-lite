@@ -72,8 +72,6 @@ Os endpoints, formatos de resposta, autenticação ou regras de CORS podem mudar
 
 - API do SUAP/IFPR.
 
-- Fonte Geist, com fallback local caso a fonte externa não carregue.
-
 ## Status
 
 Protótipo de teste em evolução. Use por sua conta e risco; para operações oficiais, consulte diretamente o SUAP.
