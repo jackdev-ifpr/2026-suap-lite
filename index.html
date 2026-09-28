@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090a">
+<title>SUAP Lite · IFPR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#08090a;--side:#0b0c0e;--panel:#101214;--panel2:#141619;--tx:#ededed;--muted:#858b91;--line:#23262a;--accent:#c5f078;--red:#ff7c78;--amber:#f0c16c}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:18px}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.55 Geist,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}h1,h2,p{margin:0}h1{font-size:1.55rem;letter-spacing:-.045em;font-weight:600}h2{font-size:1.02rem;font-weight:600;letter-spacing:-.02em}
+.layout{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:218px;padding:22px 14px;background:var(--side);border-right:1px solid var(--line);display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:10px;padding:4px 9px 32px;font-size:.96rem;font-weight:650;letter-spacing:-.04em}.brand-mark{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px #c5f07844}.brand small{display:block;color:var(--muted);font-size:.7rem;font-weight:400;letter-spacing:0}.nav{display:grid;gap:4px}.nav a{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:7px;color:#a4a9ae;text-decoration:none;font-size:.86rem}.nav a:hover,.nav a.active{background:#171a1c;color:var(--tx)}.nav-icon{width:17px;color:var(--accent);font-size:.9rem;text-align:center}.side-bottom{margin-top:auto}.side-user{display:flex;align-items:center;gap:9px;padding:13px 7px;border-top:1px solid var(--line);min-width:0}.side-user-text{min-width:0}.side-user-text b,.side-user-text small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.side-user-text b{font-size:.8rem;font-weight:550}.side-user-text small{font-size:.7rem;color:var(--muted)}.avatar{width:32px;height:32px;border:1px solid #343b32;border-radius:50%;background:#1b2118;color:var(--accent);display:grid;place-items:center;font-size:.72rem;font-weight:600;flex:none}
+.content{margin-left:218px;width:min(100% - 218px,1010px);padding:38px clamp(22px,5vw,68px) 54px}.topbar{margin-bottom:27px}.eyebrow{color:var(--muted);font-size:.69rem;letter-spacing:.11em;margin-bottom:5px}.subhead{color:var(--muted);font-size:.84rem;margin-top:5px}
+.profile-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:30px}.profile-main{display:flex;align-items:center;gap:14px;min-width:0}.profile-main .avatar{width:42px;height:42px;font-size:.86rem}.profile-copy{min-width:0;flex:1}.profile-copy h2{font-size:1rem;margin-bottom:3px}.profile-copy p{font-size:.79rem;color:var(--muted);overflow-wrap:anywhere}.status-pill{flex:none;color:#b6dc81;border:1px solid #35432a;background:#141a11;border-radius:99px;padding:5px 9px;font-size:.7rem;white-space:nowrap}.ira-chip{border-left:1px solid var(--line);padding-left:17px;margin-left:4px}.ira-chip span{display:block;color:var(--muted);font-size:.66rem;letter-spacing:.08em}.ira-chip b{font-size:.96rem;font-weight:600;color:var(--accent)}.profile-more{margin-top:14px;border-top:1px solid var(--line)}.profile-more summary{padding:12px 0 0;color:#abb0b5;font-size:.78rem;cursor:pointer;list-style:none}.profile-more summary::-webkit-details-marker{display:none}.profile-more summary:after{content:'＋';float:right;color:var(--accent)}.profile-more[open] summary:after{content:'−'}.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;padding-top:5px}.info{padding:10px 0;border-bottom:1px solid var(--line);min-width:0}.info.wide{grid-column:1/-1}.info label{display:block;color:var(--muted);font-size:.69rem;margin-bottom:2px}.info strong{font-size:.8rem;font-weight:450;overflow-wrap:anywhere}.inline-action{border:0;background:none;padding:0;margin-left:8px;width:auto;color:var(--accent);font:inherit;font-size:.72rem;cursor:pointer}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}.section-head h2{font-size:1.04rem}.section-head p{font-size:.78rem;color:var(--muted);margin-top:3px}.bar{display:flex;align-items:center;margin-bottom:8px}.bar select{width:auto;min-width:180px;max-width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--tx);font:inherit;font-size:.8rem}#st{min-height:1.2em;margin:6px 0 11px;color:var(--muted);font-size:.76rem}
+details:not(.profile-more){background:var(--panel);border:1px solid var(--line);border-radius:9px;margin-bottom:7px;overflow:hidden}summary{list-style:none;padding:13px 14px;cursor:pointer}summary::-webkit-details-marker{display:none}.top{display:flex;justify-content:space-between;gap:12px;align-items:center}.nm{font-weight:550;font-size:.87rem}.big{font-size:1.05rem;font-weight:600;text-align:right;line-height:1;white-space:nowrap;color:var(--accent)}.big small{display:block;font-size:.64rem;font-weight:400;color:var(--muted);margin-top:4px}.row{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:5px;font-size:.72rem;color:var(--muted)}.tag{font-weight:500}.ok{color:var(--accent)}.bad{color:var(--red)}.wa{color:var(--amber)}.det{padding:0 14px 12px;border-top:1px solid var(--line)}table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:7px}th,td{padding:6px 4px;text-align:left;border-bottom:1px solid var(--line)}th:not(:first-child),td:not(:first-child){text-align:right}th{color:var(--muted);font-weight:400}.hide{display:none!important}
+label{display:block;font-size:.82rem;color:var(--muted);margin:11px 0 5px}input,button{font:inherit}input{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:7px;background:#0b0c0d;color:var(--tx)}input:focus,select:focus{outline:1px solid var(--accent);border-color:var(--accent)}button{cursor:pointer}.logout{width:100%;background:none;color:var(--muted);text-align:left;border:0;border-radius:7px;padding:9px 10px;font-size:.8rem}.logout:hover{background:#171a1c;color:var(--tx)}.login-wrap{min-height:100vh;display:grid;place-items:center;padding:20px}.login-card{width:min(100%,370px);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px}.login-card .brand{padding:0 0 24px}.login-card h1{font-size:1.28rem}.login-card .subhead{margin:5px 0 18px}.login-card button{width:100%;margin-top:14px;padding:10px;background:var(--accent);color:#10120c;border:0;border-radius:7px;font-weight:600}.err{color:var(--red);font-size:.82rem;margin-top:10px}.mu{color:var(--muted)}
+@media(max-width:700px){.sidebar{position:relative;width:100%;height:auto;padding:12px 14px 9px;border:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand small{display:none}.nav{display:flex;gap:4px;overflow-x:auto}.nav a{white-space:nowrap;padding:7px 10px;font-size:.78rem}.side-bottom{position:absolute;right:12px;top:9px;margin:0}.side-user{display:none}.logout{width:auto;padding:7px 9px}.content{margin:0;width:100%;padding:24px 16px 40px}.topbar{margin-bottom:19px}.profile-card{padding:15px;margin-bottom:24px}}
+@media(max-width:420px){.content{padding-inline:13px}.profile-main{gap:10px}.profile-main .avatar{width:36px;height:36px}.status-pill{font-size:.63rem;padding:4px 7px}.ira-chip{padding-left:10px}.info-grid{grid-template-columns:1fr}.info.wide{grid-column:auto}.bar select{width:100%}}
+.content{margin:0 auto;width:min(100%,900px);padding:34px 24px 52px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}.topbar .brand{padding:0;gap:10px;font-size:.85rem}.topbar .brand .eyebrow{font-size:.64rem;margin-bottom:0;color:var(--muted)}.topbar h1{font-size:1.08rem;letter-spacing:-.03em}.logout{width:auto;border:1px solid var(--line);text-align:center;padding:7px 12px}.profile-card{padding:0;margin-bottom:32px;background:transparent;border:0;border-radius:0;box-shadow:none}.profile-main{padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:10px;gap:12px}.profile-main .avatar{width:38px;height:38px;font-size:.8rem}.profile-copy h2{font-size:.97rem}.profile-copy p{font-size:.75rem;color:var(--muted)}.profile-copy strong{color:var(--tx);font-weight:500;letter-spacing:.02em}.profile-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.profile-meta>div{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:11px 13px}.profile-meta span{display:block;color:var(--muted);font-size:.68rem;margin-bottom:3px}.profile-meta b{font-weight:550;font-size:.85rem}@media(max-width:700px){.content{padding:20px 14px 36px}}@media(max-width:420px){.profile-main{padding:13px}.profile-meta{gap:7px}.profile-meta>div{padding:10px}.profile-meta span{font-size:.65rem}}
+</style>
+</head>
+<body>
+<section id="login" class="login-wrap hide">
+  <div class="card login-card">
+    <div class="brand"><span class="brand-mark"></span><div>SUAP Lite<small>Área do estudante · IFPR</small></div></div>
+    <h1>Entrar na sua conta</h1><p class="mu">Use a mesma matrícula e senha do SUAP.</p>
+    <form id="f" autocomplete="on">
+      <label for="u">Matrícula</label><input id="u" name="username" inputmode="numeric" autocomplete="username" required>
+      <label for="p">Senha</label><input id="p" name="password" type="password" autocomplete="current-password" required>
+      <button id="go">Entrar</button><p class="err" id="e" role="alert"></p>
+    </form>
+  </div>
+</section>
+
+<div id="app" class="layout hide">
+  <main class="content">
+    <header class="topbar"><div class="brand"><span class="brand-mark"></span><div><p class="eyebrow">IFPR · SUAP LITE</p><h1>Boletim</h1></div></div><button class="logout" id="out" type="button">Sair&nbsp; ↗</button></header>
+    <section id="profile" class="profile-card">
+      <div class="profile-main"><span class="avatar" id="avatar">IF</span><div class="profile-copy"><h2 id="heroName">Carregando perfil…</h2><p>Matrícula <strong id="matricula">—</strong></p><p id="curso">—</p></div></div>
+      <div class="profile-meta"><div><span>Período</span><b id="periodoRef">—</b></div><div><span>Quantidade de períodos</span><b id="qtdPeriodos">—</b></div></div>
+    </section>
+    <section id="boletim">
+      <div class="section-head"><div><h2>Disciplinas</h2><p>Notas e frequência por período letivo.</p></div></div>
+      <div class="bar"><select id="per" aria-label="Período letivo"></select></div>
+      <p class="mu" id="st" role="status" aria-live="polite"></p>
+      <div id="list"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+const API = 'https://suap.ifpr.edu.br/api';
+const arr = x => Array.isArray(x) ? x : (Object.values(x || {}).find(Array.isArray) || []);
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const DAYS = 30;
+
+// ---- cookies (com reserva em localStorage, pois file:// não guarda cookies) ----
+function setC(k, v) {
+  const sec = location.protocol === 'https:' ? ';Secure' : '';
+  document.cookie = `${k}=${encodeURIComponent(v)};max-age=${DAYS*86400};path=/;SameSite=Strict${sec}`;
+  try { localStorage.setItem('c_' + k, v); } catch (_) {}
+}
+function getC(k) {
+  const m = document.cookie.split('; ').find(r => r.startsWith(k + '='));
+  if (m) return decodeURIComponent(m.slice(k.length + 1));
+  try { return localStorage.getItem('c_' + k) || ''; } catch (_) { return ''; }
+}
+function delC(k) {
+  document.cookie = `${k}=;max-age=0;path=/`;
+  try { localStorage.removeItem('c_' + k); } catch (_) {}
+}
+const cache = {
+  get(k) { try { return JSON.parse(localStorage.getItem('k_' + k)); } catch (_) { return null; } },
+  set(k, v) { try { localStorage.setItem('k_' + k, JSON.stringify(v)); } catch (_) {} },
+  clear() { try { Object.keys(localStorage).filter(x => x.startsWith('k_')).forEach(x => localStorage.removeItem(x)); } catch (_) {} }
+};
+
+// ---- API ----
+function saveTokens(d) {
+  if (d.access) { setC('a', d.access); setC('t', 'Bearer'); }
+  else if (d.token) { setC('a', d.token); setC('t', 'JWT'); }
+  if (d.refresh) setC('r', d.refresh);
+}
+async function post(path, body) {
+  const r = await fetch(API + path, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)});
+  if (!r.ok) throw new Error(r.status === 401 || r.status === 400 ? 'Matrícula ou senha incorretas.' : 'Erro ' + r.status);
+  return r.json();
+}
+async function refresh() {
+  const r = getC('r');
+  if (!r) return false;
+  try { saveTokens(await post('/token/refresh', {refresh: r})); return true; } catch (_) { return false; }
+}
+async function get(path, retry = true) {
+  const r = await fetch(API + path, {headers: {Authorization: (getC('t') || 'Bearer') + ' ' + getC('a')}});
+  if (r.status === 401 && retry && await refresh()) return get(path, false);
+  if (r.status === 401) { logout(); throw new Error('Sessão expirada. Entre de novo.'); }
+  if (!r.ok) throw new Error('Erro ' + r.status);
+  return r.json();
+}
+
+// ---- telas ----
+function show(logged) {
+  $('login').classList.toggle('hide', logged);
+  $('app').classList.toggle('hide', !logged);
+}
+function logout() { ['a', 'r', 't'].forEach(delC); cache.clear(); show(false); }
+
+$('out').onclick = logout;
+$('f').onsubmit = async e => {
+  e.preventDefault();
+  $('e').textContent = ''; $('go').disabled = true; $('go').textContent = 'Entrando…';
+  try {
+    saveTokens(await post('/token/pair', {username: $('u').value.trim(), password: $('p').value}));
+    $('p').value = '';
+    await start();
+  } catch (x) {
+    $('e').textContent = x.message === 'Failed to fetch' ? 'Sem conexão ou o navegador bloqueou o acesso ao SUAP (CORS).' : x.message;
+  } finally { $('go').disabled = false; $('go').textContent = 'Entrar'; }
+};
+
+const fmt = n => {
+  if (n == null || n === '') return '–';
+  const value = Number(n);
+  return Number.isFinite(value) ? value.toLocaleString('pt-BR', {maximumFractionDigits: 1}) : esc(n);
+};
+function cls(s) {
+  s = (s || '').toLowerCase();
+  return s.includes('reprov') ? 'bad' : s.includes('aprov') ? 'ok' : 'wa';
+}
+
+async function getPeriodosLetivos(page = 1) {
+  return get(`/ensino/meus-periodos-letivos/?page=${page}`);
+}
+async function getDisciplinas(semestre) {
+  return get(`/ensino/disciplinas/${encodeURIComponent(semestre)}/`);
+}
+async function getEtapasDisciplina(disciplinaId) {
+  return get(`/ensino/disciplinas/${encodeURIComponent(disciplinaId)}/etapas/`);
+}
+async function getDisciplinasComEtapas(semestre) {
+  const data = await getDisciplinas(semestre);
+  const disciplinas = data?.results ?? [];
+  return Promise.all(disciplinas.map(async disc => {
+    const etapasData = await getEtapasDisciplina(disc.id);
+    return {...disc, etapas: etapasData?.results ?? []};
+  }));
+}
+
+function render(list) {
+  list = arr(list);
+  if (!list.length) { $('list').innerHTML = '<p class="mu">Nenhuma disciplina neste período.</p>'; return; }
+  $('list').innerHTML = list.map(d => {
+    const mediaRaw = d.media_final_disciplina ?? d.media_disciplina ?? d.media ?? d.nota ?? (Array.isArray(d.medias) ? d.medias.at(-1) : d.medias);
+    const media = mediaRaw && typeof mediaRaw === 'object' ? (mediaRaw.media ?? mediaRaw.nota ?? mediaRaw.valor) : mediaRaw;
+    const etapaRows = arr(d.etapas).map(etapa => {
+      const avaliacoes = arr(etapa.avaliacoes);
+      const header = `<tr><td colspan="3"><b>Etapa ${esc(etapa.numero_etapa ?? '–')}</b></td></tr>`;
+      const rows = avaliacoes.map(av => `<tr><td>${esc(av.tipo || av.sigla || 'Avaliação')}${av.sigla && av.tipo ? ` (${esc(av.sigla)})` : ''}</td><td>${fmt(av.nota)}</td><td>${esc(av.data || '–')}</td></tr>`).join('');
+      return avaliacoes.length ? header + rows : '';
+    }).join('');
+    const situacao = d.situacao && typeof d.situacao === 'object' ? (d.situacao.rotulo || d.situacao.status || '') : (d.situacao || '');
+    const freq = d.frequencia ?? d.percentual_carga_horaria_frequentada;
+    return `<details><summary><div class="top"><div><div class="nm">${esc(d.descricao || d.disciplina || d.nome_disciplina || d.nome || d.sigla || 'Disciplina')}</div>
+      <div class="row"><span>Faltas: <b>${esc(d.qtd_faltas ?? d.numero_faltas ?? 0)}</b></span><span>Freq.: <b>${freq != null ? fmt(freq) + '%' : '–'}</b></span><span class="tag ${cls(situacao)}">${esc(situacao)}</span></div></div>
+      <div class="big">${fmt(media)}<small>média</small></div></div></summary>
+      <div class="det"><table><tr><th>Avaliação</th><th>Nota</th><th>Data</th></tr>${etapaRows || '<tr><td colspan="3" class="mu">Nenhuma avaliação disponível.</td></tr>'}</table>
+      <div class="mu" style="margin-top:8px">Carga horária: ${esc(d.ch_cumprida_aula ?? d.carga_horaria_cumprida ?? '–')} de ${esc(d.ch_total_aula ?? d.carga_horaria ?? '–')} aulas</div></div></details>`;
+  }).join('');
+}
+
+async function loadBoletim(ano, per) {
+  const key = 'b' + ano + '_' + per, old = cache.get(key);
+  if (old) { render(old.d); $('st').textContent = 'Atualizando…'; } else { $('list').innerHTML = '<p class="mu">Carregando…</p>'; }
+  try {
+    const semestre = `${ano}.${per}`;
+    const disciplinas = await getDisciplinasComEtapas(semestre);
+    cache.set(key, {d: disciplinas}); render(disciplinas); $('st').textContent = 'Atualizado agora.';
+  } catch (x) {
+    $('st').textContent = old ? 'Sem conexão. Mostrando dados salvos.' : x.message;
+  }
+}
+
+async function start() {
+  show(true);
+  const me = cache.get('me'), rh = cache.get('rh');
+  if (me || rh) fillMe(me || {}, rh || {});
+  const per = cache.get('per'); if (per) fillPer(per);
+  try {
+    const [m, p, dadosRh] = await Promise.all([get('/ensino/meus-dados-aluno/'), getPeriodosLetivos(), get('/rh/meus-dados/')]);
+    cache.set('me', m); cache.set('rh', dadosRh); cache.set('per', p); fillMe(m, dadosRh); if (!per) fillPer(p);
+  } catch (x) { if (!me && !rh) $('st').textContent = x.message; }
+}
+function fillMe(m = {}, rh = {}) {
+  const nome = rh.nome_usual || rh.vinculo?.nome || m.nome_usual || m.nome || 'Aluno';
+  const matricula = rh.matricula || rh.vinculo?.matricula || m.matricula || '—';
+  const curso = typeof m.curso === 'string' ? m.curso : (rh.vinculo?.curso || m.curso?.nome || '—');
+  const initials = nome.split(/\s+/).filter(Boolean).slice(0, 2).map(x => x[0]).join('').toUpperCase() || 'AL';
+  $('heroName').textContent = nome;
+  $('matricula').textContent = matricula;
+  $('curso').textContent = curso;
+  $('avatar').textContent = initials;
+  $('periodoRef').textContent = m.periodo_referencia != null ? `${m.periodo_referencia}º` : '—';
+  $('qtdPeriodos').textContent = m.qtd_periodos != null ? `${m.qtd_periodos} períodos` : '—';
+}
+function fillPer(p) {
+  p = arr(p);
+  if (!p.length) return;
+  const cur = $('per').value;
+  const l = [...p].sort((a, b) => b.ano_letivo - a.ano_letivo || b.periodo_letivo - a.periodo_letivo);
+  $('per').innerHTML = l.map(x => `<option value="${x.ano_letivo}/${x.periodo_letivo}">${x.ano_letivo}.${x.periodo_letivo}</option>`).join('');
+  if (cur) $('per').value = cur;
+  const [a, b] = $('per').value.split('/'); loadBoletim(a, b);
+}
+$('per').onchange = () => { const [a, b] = $('per').value.split('/'); loadBoletim(a, b); };
+
+getC('a') ? start() : show(false);
+</script>
+</body>
+</html>
