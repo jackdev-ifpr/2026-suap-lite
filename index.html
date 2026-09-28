@@ -28,8 +28,8 @@ label{display:block;font-size:.82rem;color:var(--muted);margin:11px 0 5px}input,
     <div class="brand"><span class="brand-mark"></span><div>SUAP Lite<small>Área do estudante · IFPR</small></div></div>
     <h1>Entrar na sua conta</h1><p class="mu">Use a mesma matrícula e senha do SUAP.</p>
     <form id="f" autocomplete="on">
-      <label for="u">Matrícula</label><input id="u" name="username" inputmode="numeric" autocomplete="username" required>
-      <label for="p">Senha</label><input id="p" name="password" type="password" autocomplete="current-password" required>
+      <label for="u">Matrícula</label><input id="u" name="username" inputmode="text" autocomplete="suapmatricula" required>
+      <label for="p">Senha</label><input id="p" name="password" type="password" autocomplete="suapsenha" required>
       <button id="go">Entrar</button><p class="err" id="e" role="alert"></p>
     </form>
   </div>
