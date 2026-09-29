@@ -2,7 +2,7 @@
 
 > Um SUAP Lite totalmente vibe-coded 💀
 
-Um protótipo experimental de consulta ao boletim do IFPR: tela enxuta, tema escuro e foco no que importa — disciplinas, notas e frequência. **Totalmente criado por inteligência artifical.**
+Um protótipo experimental para consultar o boletim do IFPR: tela enxuta, tema escuro e foco no que importa — disciplinas, notas, frequência e aulas de hoje. **Totalmente criado por inteligência artificial.**
 
 **Feito para aprender e testar, não para produção.** O projeto foi desenvolvido com apoio do **Manus** e do **Claude Code**, em um fluxo de prototipação rápida (*vibe coding*).
 
@@ -18,9 +18,21 @@ Um protótipo experimental de consulta ao boletim do IFPR: tela enxuta, tema esc
 
 - Detalhes de avaliações, notas, faltas e frequência por disciplina.
 
+- Horários das aulas do dia atual.
+
+- Aviso estimado sobre faltar hoje: considera quantos períodos estão marcados para cada disciplina, as aulas já cumpridas, a carga horária total, as faltas e a frequência disponível no boletim.
+
 - Interface responsiva, minimalista e em tema escuro, com Geist e fontes de sistema como fallback.
 
-- Cache local de boletins já consultados para ajudar quando a conexão falhar.
+- Cache local de boletins e horários já consultados para ajudar quando a conexão falhar.
+
+## Como funciona o aviso de faltas
+
+O protótipo projeta o efeito de faltar a **cada período listado para hoje**. Por exemplo, dois períodos da mesma disciplina contam como duas faltas na estimativa. Quando os dados estão disponíveis, a projeção combina as aulas já cumpridas e a frequência atual para estimar como a presença pode ficar após as aulas de hoje.
+
+O limite de faltas é estimado como 25% da carga horária total, equivalente à referência de 75% de frequência mínima usada no aviso. A mensagem diferencia situações como estar abaixo de 75% agora, cair abaixo desse patamar se faltar hoje, ou permanecer dentro do limite estimado.
+
+> A estimativa é apenas um auxílio: pode variar conforme a atualização e as regras aplicadas pelo SUAP/IFPR. Estar abaixo de 75% durante o período não significa, por si só, reprovação final automática — a frequência pode se recuperar com as aulas seguintes. Confira sempre seus registros e sua situação diretamente no SUAP e com a instituição. Se a API não fornecer dados suficientes, o protótipo informa que não consegue calcular com segurança.
 
 ## Como testar
 
@@ -48,9 +60,11 @@ O cliente aponta para a API do SUAP do IFPR e consulta, entre outros, estes endp
 
 - `GET /api/ensino/meus-periodos-letivos/` — períodos letivos disponíveis.
 
-- `GET /api/ensino/disciplinas/{ano}.{período}/` — disciplinas do período.
+- `GET /api/ensino/disciplinas/{ano}.{período}/` — disciplinas e dados do boletim no período.
 
 - `GET /api/ensino/disciplinas/{id}/etapas/` — avaliações de uma disciplina.
+
+- `GET /api/ensino/diarios/{ano}.{período}/?page=1` — diários e horários das aulas; o protótipo percorre páginas adicionais quando a API informa que existem.
 
 Os endpoints, formatos de resposta, autenticação ou regras de CORS podem mudar sem aviso; por isso, o funcionamento pode variar.
 
@@ -65,6 +79,8 @@ Os endpoints, formatos de resposta, autenticação ou regras de CORS podem mudar
 - Não inclua credenciais, tokens ou dados pessoais em issues, commits públicos ou mensagens.
 
 - A senha é enviada ao endpoint de autenticação do SUAP; não há um servidor próprio intermediando as chamadas.
+
+- O aviso de faltas depende dos dados retornados pelo SUAP e é uma estimativa; não altera registros de frequência nem determina oficialmente aprovação ou reprovação.
 
 ## Stack
 
