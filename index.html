@@ -275,7 +275,7 @@ function renderHorario(diarios, cursos = []) {
     const advice=attendanceAdvice(data,x.count);
     return `<article class="today-class"><div class="today-top"><div class="today-info"><h3>${esc(x.name)}</h3><div class="time">${esc(x.times.join(' · '))}</div></div><span class="advice ${advice.tone}">${esc(advice.label)}</span></div><p class="advice-detail">${esc(advice.detail)}</p></article>`;
   }).join('');
-  $('todayAdvice').innerHTML=`<div class="today-card"><div class="today-head"><b>Hoje · ${esc(today)}</b><span>${esc(date)} · ${entries.length} período(s)</span></div>${cards}</div>`;
+  $('todayAdvice').innerHTML=`<div class="today-card"><div class="today-head"><b>Hoje · ${esc(today)}</b><span>${esc(date)}</span></div>${cards}</div>`;
 }
 async function loadHorario(ano, per) {
   const key = `h${ano}_${per}`;
