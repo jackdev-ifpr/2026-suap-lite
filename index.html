@@ -21,6 +21,13 @@ label{display:block;font-size:.82rem;color:var(--muted);margin:11px 0 5px}input,
 @media(max-width:420px){.content{padding-inline:13px}.profile-main{gap:10px}.profile-main .avatar{width:36px;height:36px}.status-pill{font-size:.63rem;padding:4px 7px}.ira-chip{padding-left:10px}.info-grid{grid-template-columns:1fr}.info.wide{grid-column:auto}.bar select{width:100%}}
 .content{margin:0 auto;width:min(100%,900px);padding:34px 24px 52px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--line)}.topbar .brand{padding:0;gap:10px;font-size:.85rem}.topbar .brand .eyebrow{font-size:.64rem;margin-bottom:0;color:var(--muted)}.topbar h1{font-size:1.08rem;letter-spacing:-.03em}.logout{width:auto;border:1px solid var(--line);text-align:center;padding:7px 12px}.profile-card{padding:0;margin-bottom:32px;background:transparent;border:0;border-radius:0;box-shadow:none}.profile-main{padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:10px;gap:12px}.profile-main .avatar{width:38px;height:38px;font-size:.8rem}.profile-copy h2{font-size:.97rem}.profile-copy p{font-size:.75rem;color:var(--muted)}.profile-copy strong{color:var(--tx);font-weight:500;letter-spacing:.02em}.profile-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.profile-meta>div{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:11px 13px}.profile-meta span{display:block;color:var(--muted);font-size:.68rem;margin-bottom:3px}.profile-meta b{font-weight:550;font-size:.85rem}@media(max-width:700px){.content{padding:20px 14px 36px}}@media(max-width:420px){.profile-main{padding:13px}.profile-meta{gap:7px}.profile-meta>div{padding:10px}.profile-meta span{font-size:.65rem}}
 </style>
+
+<style>
+.quick-nav{display:flex;gap:5px;margin-left:auto;margin-right:6px}.quick-nav a{color:var(--muted);text-decoration:none;padding:7px 10px;border:1px solid transparent;border-radius:7px;font-size:.77rem}.quick-nav a:hover{color:var(--tx);border-color:var(--line);background:var(--panel)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.schedule-section #scheduleStatus:not(.sr-only){font-size:.76rem;margin:0 0 10px;color:var(--amber)}.schedule-section{margin-bottom:34px}.schedule-section .section-head{margin-bottom:8px}.schedule-section #scheduleStatus{font-size:.76rem;margin:0 0 10px}.today-card{padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}.today-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.today-head b{font-size:.88rem}.today-head span{font-size:.7rem;color:var(--muted)}.today-class{padding:12px 0;border-bottom:1px solid var(--line)}.today-class:last-child{border-bottom:0}.today-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.today-info{min-width:0}.today-class h3{font-size:.82rem;line-height:1.3;font-weight:600;margin:0 0 3px}.time{font-variant-numeric:tabular-nums;color:var(--accent);font-size:.71rem;line-height:1.4;overflow-wrap:anywhere}.advice{display:inline-block;flex:none;border-radius:99px;padding:4px 8px;font-size:.64rem;line-height:1.25;text-align:center;max-width:45%}.advice.good{color:var(--accent);background:#1b2513;border:1px solid #35432a}.advice.warn{color:var(--amber);background:#241e12;border:1px solid #514126}.advice.bad{color:var(--red);background:#291615;border:1px solid #55302e}.advice.unknown{color:#b8bec4;background:#191c1e;border:1px solid #34383b}.advice-detail{margin:7px 0 0;color:#b4b9bd;font-size:.72rem;line-height:1.45}.schedule-empty{padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:.8rem}
+@media(max-width:600px){.topbar{flex-wrap:wrap}.quick-nav{order:3;width:100%;margin:3px 0 0}.quick-nav a{padding:6px 9px}.today-card{padding-inline:11px}.today-top{align-items:flex-start}.advice{max-width:46%;font-size:.61rem;padding:4px 6px}.today-class{padding:11px 0}}
+</style>
+
 </head>
 <body>
 <section id="login" class="login-wrap hide">
@@ -37,10 +44,15 @@ label{display:block;font-size:.82rem;color:var(--muted);margin:11px 0 5px}input,
 
 <div id="app" class="layout hide">
   <main class="content">
-    <header class="topbar"><div class="brand"><span class="brand-mark"></span><div><p class="eyebrow">IFPR · SUAP LITE</p><h1>Boletim</h1></div></div><button class="logout" id="out" type="button">Sair&nbsp; ↗</button></header>
+    <header class="topbar"><div class="brand"><span class="brand-mark"></span><div><p class="eyebrow">IFPR · SUAP LITE</p><h1>Boletim</h1></div></div><nav class="quick-nav" aria-label="Navegação"><a href="#boletim">Disciplinas</a><a href="#horario">Hoje</a></nav><button class="logout" id="out" type="button">Sair&nbsp; ↗</button></header>
     <section id="profile" class="profile-card">
       <div class="profile-main"><span class="avatar" id="avatar">IF</span><div class="profile-copy"><h2 id="heroName">Carregando perfil…</h2><p id="matricula">—</p><p id="curso">—</p></div></div>
       <div class="profile-meta"><div><span>Período</span><b id="periodoRef">—</b></div><div><span>Quantidade de períodos</span><b id="qtdPeriodos">—</b></div></div>
+    </section>
+    <section id="horario" class="schedule-section">
+      <div class="section-head"><div><h2>Aulas de hoje</h2></div></div>
+      <p class="sr-only" id="scheduleStatus" role="status" aria-live="polite"></p>
+      <div id="todayAdvice"></div>
     </section>
     <section id="boletim">
       <div class="section-head"><div><h2>Disciplinas</h2><p>Notas e frequência por período letivo.</p></div></div>
@@ -151,6 +163,139 @@ async function getDisciplinasComEtapas(semestre) {
   }));
 }
 
+async function getDiarios(semestre) {
+  const diarios = [];
+  let page = 1;
+  for (let i = 0; i < 100; i++) {
+    const data = await get(`/ensino/diarios/${encodeURIComponent(semestre)}/?page=${page}`);
+    diarios.push(...arr(data?.results));
+    if (!data?.next || !arr(data?.results).length) break;
+    const nextPage = Number(new URL(data.next, API).searchParams.get('page'));
+    if (!Number.isFinite(nextPage) || nextPage <= page) break;
+    page = nextPage;
+  }
+  return diarios;
+}
+function numberOrNull(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+function normDay(value) {
+  return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+const WEEKDAYS = ['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
+function todayWeekday() { return WEEKDAYS[(new Date().getDay() + 6) % 7]; }
+function parseStart(time) {
+  const m = String(time || '').match(/(\d{1,2}):(\d{2})/);
+  return m ? Number(m[1]) * 60 + Number(m[2]) : 9999;
+}
+function normalizedName(value) { return normDay(value).replace(/[^a-z0-9]/g, ''); }
+function attendanceData(subject, course) {
+  const first = (...values) => values.find(v => v !== null && v !== undefined && v !== '');
+  // Esses são os mesmos campos/aliases usados na lista de disciplinas do boletim.
+  const abs = numberOrNull(first(course?.qtd_faltas, course?.numero_faltas, subject.qtd_faltas, subject.numero_faltas));
+  const total = numberOrNull(first(course?.ch_total_aula, course?.carga_horaria, subject.ch_total_aula, subject.carga_horaria));
+  const completed = numberOrNull(first(course?.ch_cumprida_aula, course?.carga_horaria_cumprida, subject.ch_cumprida_aula, subject.carga_horaria_cumprida));
+  const rawFreq = numberOrNull(first(course?.frequencia, course?.percentual_carga_horaria_frequentada, subject.frequencia, subject.percentual_carga_horaria_frequentada));
+  const freq = rawFreq !== null && (total > 0 || completed > 0 || abs > 0) ? rawFreq : null;
+  const limit = total !== null && total > 0 ? Math.floor(total * 0.25) : null;
+  const remaining = limit !== null && abs !== null ? limit - abs : null;
+  return {abs,total,completed,freq,limit,remaining};
+}
+function attendanceAdvice(data, todayCount) {
+  const {abs,total,completed,freq,limit} = data;
+  const afterAbs = abs === null ? null : abs + todayCount;
+  const afterRemaining = limit !== null && afterAbs !== null ? limit - afterAbs : null;
+  const projectedFreq = freq !== null && completed !== null && completed + todayCount > 0
+    ? (freq * completed) / (completed + todayCount) : null;
+  const pct = projectedFreq === null ? null : `${fmt(projectedFreq)}%`;
+  const progress = completed !== null && total !== null ? `Aulas dadas: ${fmt(completed)}/${fmt(total)}. ` : completed !== null ? `${fmt(completed)} aulas dadas; carga total indisponível. ` : total !== null ? `Carga total: ${fmt(total)} aulas. ` : '';
+  const after = afterAbs !== null && limit !== null ? `Após ${todayCount} falta(s), ficaria em ${fmt(afterAbs)}/${fmt(limit)} faltas.` : '';
+  if (freq !== null && freq < 75) {
+    const margin = afterRemaining !== null && afterRemaining > 0 ? ` Ainda há margem no limite total (${fmt(afterRemaining)} faltas),` : '';
+    return {tone:'bad',label:'Melhor ir hoje',detail:`${progress}Você já está com ${fmt(freq)}% de presença, abaixo de 75%.${margin} mas é melhor ir às aulas para recuperar.`};
+  }
+  if (afterRemaining !== null && afterRemaining < 0) {
+    return {tone:'bad',label:'Não falte hoje',detail:`${progress}${after} Acima do limite estimado para a carga horária: risco de reprovação por faltas.`};
+  }
+  if (projectedFreq !== null && projectedFreq < 75) {
+    return {tone:'bad',label:'Melhor ir hoje',detail:`${progress}Se faltar aos ${todayCount} períodos, a presença estimada cai para ${pct} (abaixo de 75%). Vá para manter/recuperar a frequência.`};
+  }
+  if (afterRemaining !== null && afterRemaining === 0) {
+    return {tone:'warn',label:'Cuidado: fica no limite',detail:`${progress}${after} Presença estimada: ${pct || 'indisponível'}. Evite novas faltas.`};
+  }
+  if (afterRemaining !== null && afterRemaining <= 2) {
+    return {tone:'warn',label:'Pode faltar, mas com pouca margem',detail:`${progress}${after} Presença estimada: ${pct || 'indisponível'}; restariam só ${fmt(afterRemaining)} falta(s).`};
+  }
+  if (afterRemaining !== null && projectedFreq !== null) {
+    return {tone:'good',label:'Pode faltar hoje',detail:`${progress}${after} Presença estimada após hoje: ${pct} (mínimo: 75%).`};
+  }
+  if (freq !== null || afterRemaining !== null) {
+    const attendance = freq === null ? 'Presença atual indisponível.' : `Presença atual: ${fmt(freq)}%.`;
+    const load = after ? `${after} ` : '';
+    return {tone:'unknown',label:'Confira antes de faltar',detail:`${progress}${attendance} ${load}Faltam dados para prever com segurança se a presença ficará acima de 75%.`};
+  }
+  return {tone:'unknown',label:'Sem dados suficientes',detail:'O SUAP não trouxe carga horária e frequência para calcular o efeito de faltar.'};
+}
+function renderHorario(diarios, cursos = []) {
+  const byId = new Map(), byName = new Map();
+  arr(cursos).forEach(c => {
+    const id = c.id ?? c.disciplina?.id;
+    if (id != null) byId.set(String(id), c);
+    const name = normalizedName(c.descricao || c.nome_disciplina || c.nome || c.disciplina?.descricao || c.sigla || '');
+    if (name) byName.set(name, c);
+  });
+  const today = todayWeekday();
+  const todayKey = normDay(today);
+  const entries = [];
+  arr(diarios).forEach(diario => {
+    const subject = diario.disciplina || {};
+    const course = byId.get(String(subject.id ?? '')) || byName.get(normalizedName(subject.descricao || subject.nome || subject.sigla || ''));
+    arr(diario.horarios).forEach(slot => {
+      if (normDay(slot.dia) !== todayKey) return;
+      entries.push({time:slot.horario || 'Horário não informado',subject,course,diario});
+    });
+  });
+  entries.sort((a,b) => parseStart(a.time)-parseStart(b.time));
+  if (!entries.length) {
+    $('todayAdvice').innerHTML = '<div class="schedule-empty">Sem aulas previstas para hoje.</div>';
+    return;
+  }
+  const groups = new Map();
+  entries.forEach(x => {
+    const name = x.course?.descricao || x.course?.nome_disciplina || x.course?.nome || x.subject.descricao || x.subject.nome || x.subject.sigla || 'Disciplina';
+    const id = String(x.subject.id ?? normalizedName(name));
+    if (!groups.has(id)) groups.set(id,{...x,name,times:[],count:0});
+    const group=groups.get(id); group.times.push(x.time); group.count++;
+  });
+  const date = new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'long'}).format(new Date());
+  const cards=[...groups.values()].map(x => {
+    const data=attendanceData(x.subject,x.course);
+    const advice=attendanceAdvice(data,x.count);
+    return `<article class="today-class"><div class="today-top"><div class="today-info"><h3>${esc(x.name)}</h3><div class="time">${esc(x.times.join(' · '))}</div></div><span class="advice ${advice.tone}">${esc(advice.label)}</span></div><p class="advice-detail">${esc(advice.detail)}</p></article>`;
+  }).join('');
+  $('todayAdvice').innerHTML=`<div class="today-card"><div class="today-head"><b>Hoje · ${esc(today)}</b><span>${esc(date)} · ${entries.length} período(s)</span></div>${cards}</div>`;
+}
+async function loadHorario(ano, per) {
+  const key = `h${ano}_${per}`;
+  const old = cache.get(key);
+  const status = $('scheduleStatus');
+  if (old) { renderHorario(old.d, cache.get(`b${ano}_${per}`)?.d || []); status.textContent = 'Atualizando horários…'; }
+  else { $('todayAdvice').innerHTML = '<div class="schedule-empty">Carregando…</div>'; status.textContent = 'Carregando horários…'; }
+  status.classList.add('sr-only');
+  try {
+    const diarios = await getDiarios(`${ano}.${per}`);
+    cache.set(key, {d:diarios});
+    renderHorario(diarios, cache.get(`b${ano}_${per}`)?.d || []);
+    status.textContent = diarios.length ? 'Horários atualizados.' : 'Nenhum diário encontrado neste período.';
+    status.classList.add('sr-only');
+  } catch (x) {
+    status.textContent = old ? 'Sem conexão; mostrando horários salvos.' : `Não foi possível carregar horários: ${x.message}`;
+    status.classList.remove('sr-only');
+  }
+}
+
 function render(list) {
   list = arr(list);
   if (!list.length) { $('list').innerHTML = '<p class="mu">Nenhuma disciplina neste período.</p>'; return; }
@@ -180,6 +325,8 @@ async function loadBoletim(ano, per) {
     const semestre = `${ano}.${per}`;
     const disciplinas = await getDisciplinasComEtapas(semestre);
     cache.set(key, {d: disciplinas}); render(disciplinas); $('st').textContent = 'Atualizado agora.';
+    const horarios = cache.get(`h${ano}_${per}`);
+    if (horarios) renderHorario(horarios.d, disciplinas);
   } catch (x) {
     $('st').textContent = old ? 'Sem conexão. Mostrando dados salvos.' : x.message;
   }
@@ -214,9 +361,9 @@ function fillPer(p) {
   const l = [...p].sort((a, b) => b.ano_letivo - a.ano_letivo || b.periodo_letivo - a.periodo_letivo);
   $('per').innerHTML = l.map(x => `<option value="${x.ano_letivo}/${x.periodo_letivo}">${x.ano_letivo}.${x.periodo_letivo}</option>`).join('');
   if (cur) $('per').value = cur;
-  const [a, b] = $('per').value.split('/'); loadBoletim(a, b);
+  const [a, b] = $('per').value.split('/'); loadBoletim(a, b); loadHorario(a, b);
 }
-$('per').onchange = () => { const [a, b] = $('per').value.split('/'); loadBoletim(a, b); };
+$('per').onchange = () => { const [a, b] = $('per').value.split('/'); loadBoletim(a, b); loadHorario(a, b); };
 
 getC('a') ? start() : show(false);
 </script>
