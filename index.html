@@ -321,7 +321,7 @@ function render(list) {
     const freq = d.frequencia ?? d.percentual_carga_horaria_frequentada;
     return `<details><summary><div class="top"><div><div class="nm">${esc(d.descricao || d.disciplina || d.nome_disciplina || d.nome || d.sigla || 'Disciplina')}</div>
       <div class="row"><span>Faltas: <b>${esc(d.qtd_faltas ?? d.numero_faltas ?? 0)}</b></span><span>Freq.: <b>${freq != null ? fmt(freq) + '%' : '–'}</b></span><span class="tag ${cls(situacao)}">${esc(situacao)}</span></div></div>
-      <div class="big">${fmt(media)}<small>média</small></div></div></summary>
+      <div class="big">${notaConceito(media)}<small>média</small></div></div></summary>
       <div class="det"><table><tr><th>Avaliação</th><th>Nota</th><th>Data</th></tr>${etapaRows || '<tr><td colspan="3" class="mu">Nenhuma avaliação disponível.</td></tr>'}</table>
       <div class="mu" style="margin-top:8px">Carga horária: ${esc(d.ch_cumprida_aula ?? d.carga_horaria_cumprida ?? '–')} de ${esc(d.ch_total_aula ?? d.carga_horaria ?? '–')} aulas</div></div></details>`;
   }).join('');
