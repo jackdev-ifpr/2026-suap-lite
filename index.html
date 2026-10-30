@@ -135,6 +135,21 @@ $('f').onsubmit = async e => {
   } finally { $('go').disabled = false; $('go').textContent = 'Entrar'; }
 };
 
+const notaConceito = n => {
+  if (n == null || n === '' || n === '-') return '–';
+
+  switch (n) {
+    case 100:
+      return 'A';
+    case 80:
+      return 'B';
+    case 70:
+      return 'C';
+    default:
+      return 'D'
+  }
+}
+  
 const fmt = n => {
   if (n == null || n === '') return '–';
   const value = Number(n);
@@ -305,7 +320,7 @@ function render(list) {
     const etapaRows = arr(d.etapas).map(etapa => {
       const avaliacoes = arr(etapa.avaliacoes);
       const header = `<tr><td colspan="3"><b>Etapa ${esc(etapa.numero_etapa ?? '–')}</b></td></tr>`;
-      const rows = avaliacoes.map(av => `<tr><td>${esc(av.tipo || av.sigla || 'Avaliação')}${av.sigla && av.tipo ? ` (${esc(av.sigla)})` : ''}</td><td>${fmt(av.nota)}</td><td>${esc(av.data || '–')}</td></tr>`).join('');
+      const rows = avaliacoes.map(av => `<tr><td>${esc(av.tipo || av.sigla || 'Avaliação')}${av.sigla && av.tipo ? ` (${esc(av.sigla)})` : ''}</td><td>${notaConceito(fmt(av.nota))}</td><td>${esc(av.data || '–')}</td></tr>`).join('');
       return avaliacoes.length ? header + rows : '';
     }).join('');
     const situacao = d.situacao && typeof d.situacao === 'object' ? (d.situacao.rotulo || d.situacao.status || '') : (d.situacao || '');
